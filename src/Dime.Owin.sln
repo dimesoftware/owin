@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dime.Owin", "core\Dime.Owin.csproj", "{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9EDA5AC-934C-4496-911D-F0BEDAECF8F8}
+	EndGlobalSection
+EndGlobal
