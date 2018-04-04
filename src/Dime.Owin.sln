@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dime.Owin", "core\Dime.Owin.csproj", "{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C2D7DAF0-ADF0-45FD-8C90-850C5912E5ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dime.Owin.Tests", "test\Dime.Owin.Tests.csproj", "{EBE8FA40-D296-4B47-B53B-6363B921E27F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB480230-4A7E-46D2-BCAE-C69C2B50F83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE8FA40-D296-4B47-B53B-6363B921E27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE8FA40-D296-4B47-B53B-6363B921E27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE8FA40-D296-4B47-B53B-6363B921E27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE8FA40-D296-4B47-B53B-6363B921E27F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBE8FA40-D296-4B47-B53B-6363B921E27F} = {C2D7DAF0-ADF0-45FD-8C90-850C5912E5ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9EDA5AC-934C-4496-911D-F0BEDAECF8F8}
