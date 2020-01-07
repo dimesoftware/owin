@@ -1,50 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Microsoft.Owin
 {
     /// <summary>
-    /// Utilities that extend the <see cref="IOwinContext"/> class
+    /// Useful utilities that add functionality to the <see cref="Microsoft.Owin.IOwinContext"/> class.
     /// </summary>
-    public static class OwinContextUtilities
+    internal static class OwinContextUtilities
     {
         /// <summary>
-        /// Checks if the encoding is supported
+        /// Determines whether the current request supports the <paramref name="encoding"/>.
         /// </summary>
-        ///  <param name="context">The context</param>
+        /// <param name="context">The current request context</param>
         /// <param name="encoding">The encoding</param>
-        /// <returns>True if the encoding is supported</returns>
-        public static bool SupportsEncoding(this IOwinContext context, string encoding)
+        /// <returns>True if the request contains the encoding string in the HEADERS config object.</returns>
+        internal static bool SupportsEncoding(this IOwinContext context, string encoding)
         {
             IEnumerable<string> acceptedEncoding = context.Request.Headers["Accept-Encoding"]?.Split(',');
             return acceptedEncoding.Any(x => string.Equals(x, encoding, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
-        /// Checks if the request is an AJAX request
+        /// Determines if the current request is an AJAX request.
         /// </summary>
-        /// <param name="context">The request context</param>
-        /// <returns>True if the request is an AJAX request</returns>
-        public static bool IsAjaxRequest(this IOwinContext context)
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request contains the 'X-Requested-With' key in the HEADERS config object.</returns>
+        internal static bool IsAjaxRequest(this IOwinContext context)
             => context.Request.Headers.ContainsKey("X-Requested-With")
                && context.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
 
         /// <summary>
-        /// Checks if the request is a web sockets request
+        /// Determines if the current request is a HTML request.
         /// </summary>
-        /// <param name="context">The request context</param>
-        /// <returns>True if the request is a web sockets request</returns>
-        public static bool IsWebSocketRequest(this IOwinContext context)
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request finds the 'HTML' key in the HEADERS' Accept config object.</returns>
+        internal static bool IsHtmlRequest(this IOwinContext context)
+            => context.Request?.Headers != null
+               && context.Request.Headers.ContainsKey("Accept")
+               && (context.Request.Headers["Accept"].Contains("html") || context.Request.Headers["Accept"].Contains("*/*"));
+
+        /// <summary>
+        /// Determines if the current request is a SignalR request.
+        /// </summary>
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request finds 'signalr' in the request path</returns>
+        internal static bool IsWebSocketRequest(this IOwinContext context)
             => context.Request.Path.ToString().Contains("signalr");
 
         /// <summary>
-        /// Checks if the request is a file request
+        /// Determines if the current request is a file request.
         /// </summary>
-        /// <param name="context">The request context</param>
-        /// <returns>True if the request is a file request</returns>
-        public static bool IsFileRequest(this IOwinContext context) 
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request contains a file extension in the request path</returns>
+        internal static bool IsFileRequest(this IOwinContext context)
             => !string.IsNullOrEmpty(Path.GetExtension(context.Request.Path.ToString()));
+
+        /// <summary>
+        /// Determines if the current request is a bundle request.
+        /// </summary>
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request finds 'bundles' in the request path</returns>
+        internal static bool IsBundleRequest(this IOwinContext context)
+            => context.Request.Path.ToString().Contains("bundles");
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
+        /// <returns></returns>
+        public static async Task WriteToOutput(this IOwinContext context, string output)
+        {
+            context.Response.ContentType = "text/javascript";
+            await context.Response.WriteAsync(output).ConfigureAwait(true);
+
+            if (context.SupportsEncoding("gzip"))
+                context.Response.Body = new GZipStream(context.Response.Body, CompressionMode.Compress);
+            else if (context.SupportsEncoding("deflate"))
+                context.Response.Body = new DeflateStream(context.Response.Body, CompressionMode.Compress);
+        }
     }
 }

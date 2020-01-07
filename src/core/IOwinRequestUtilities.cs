@@ -5,15 +5,15 @@ using System.IO;
 namespace Microsoft.Owin
 {
     /// <summary>
-    /// Utilities that extend the <see cref="IOwinRequest"/> class
+    /// Useful utilities that add functionality to the <see cref="Microsoft.Owin.IOwinRequest"/> class.
     /// </summary>
     public static class OwinRequestUtilities
     {
         /// <summary>
         ///
         /// </summary>
-        /// <param name="request">The request context</param>
-        /// <returns></returns>       
+        /// <param name="request"></param>
+        /// <returns></returns>
         public static bool IsBearerTokenRequest(this IOwinRequest request)
         {
             IHeaderDictionary headers = request.Headers;
@@ -25,8 +25,8 @@ namespace Microsoft.Owin
         /// <summary>
         ///
         /// </summary>
-        /// <param name="request">The request context</param>
-        /// <returns></returns>    
+        /// <param name="request"></param>
+        /// <returns></returns>
         public static bool IsSuppressedRequest(this IOwinRequest request)
         {
             IHeaderDictionary responseHeader = request.Headers;
@@ -37,10 +37,10 @@ namespace Microsoft.Owin
         }
 
         /// <summary>
-        /// Checks if the request is an AJAX request
+        /// Determines if the current request is an AJAX request.
         /// </summary>
-        /// <param name="request">The request context</param>
-        /// <returns>True if the request is an AJAX request</returns>
+        /// <param name="request">The current request context</param>
+        /// <returns>True if the current request contains the 'X-Requested-With' key in the HEADERS config object.</returns>
         public static bool IsAjaxRequest(this IOwinRequest request)
         {
             const string xmlHttpRequest = "XMLHttpRequest";
@@ -58,19 +58,19 @@ namespace Microsoft.Owin
         }
 
         /// <summary>
-        /// Checks if the request is a web sockets request
+        /// Determines if the current request is a SignalR request.
         /// </summary>
-        /// <param name="context">The request context</param>
-        /// <returns>True if the request is a web sockets request</returns>
-        public static bool IsWebSocketRequest(this IOwinRequest context)
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request finds 'signalr' in the request path</returns>
+        internal static bool IsWebSocketRequest(this IOwinRequest context)
             => context.Path.ToString().Contains("signalr");
 
         /// <summary>
-        /// Checks if the request is a file request
+        /// Determines if the current request is a file request.
         /// </summary>
-        /// <param name="context">The request context</param>
-        /// <returns>True if the request is a file request</returns>
-        public static bool IsFileRequest(this IOwinRequest context)
+        /// <param name="context">The current request context</param>
+        /// <returns>True if the current request contains a file extension in the request path</returns>
+        internal static bool IsFileRequest(this IOwinRequest context)
             => !string.IsNullOrEmpty(Path.GetExtension(context.Path.ToString()));
     }
 }

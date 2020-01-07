@@ -10,27 +10,25 @@
   <PropertyGroup>
     <Authors>Dimenics</Authors>
     <TargetFramework>net461</TargetFramework>
-    <AssemblyName>Dime.Mvc5.Owin</AssemblyName>
-    <PackageId>Dime.Mvc5.Owin</PackageId>
+    <AssemblyName>Dime.Owin</AssemblyName>
+    <PackageId>Dime.Owin</PackageId>
     <PackageIconUrl>http://dimenuget.azurewebsites.net/Images/dimenuget.png</PackageIconUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>1.0.2</Version>
+    <Version>1.0.0</Version>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>OWIN utilities for ASP.NET MVC 5</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>- 1.0.2: Update Microsoft.Owin and C#7 syntax</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <IncludeSymbols>True</IncludeSymbols>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://dev.azure.com/dimenicsbe/Utilities/_git/Dime.Owin</RepositoryUrl>
+    <PackageTags>OWIN</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.Owin" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin" Version="4.1.0" />
   </ItemGroup>
 
 </Project>
