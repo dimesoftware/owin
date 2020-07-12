@@ -1,10 +1,10 @@
-# Dime.Owin
+# Owin extensions
 
-[![Build Status](https://dev.azure.com/dimenicsbe/Utilities/_apis/build/status/OWIN%20-%20MAIN%20-%20CI?branchName=master)](https://dev.azure.com/dimenicsbe/Utilities/_build/latest?definitionId=92&branchName=master)
+![Build Status](https://dev.azure.com/dimenicsbe/Utilities/_apis/build/status/dimenics.owin?branchName=master) ![Code coverage](https://img.shields.io/azure-devops/coverage/dimenicsbe/Utilities/153/master)
 
 ## Introduction
 
-Extensions to the OWIN namespace.
+Extensions to the Owin namespace.
 
 ## Getting Started
 
