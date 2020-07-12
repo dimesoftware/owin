@@ -1,4 +1,4 @@
-# Dime.Owi
+# Dime.Owin
 
 [![Build Status](https://dev.azure.com/dimenicsbe/Utilities/_apis/build/status/OWIN%20-%20MAIN%20-%20CI?branchName=master)](https://dev.azure.com/dimenicsbe/Utilities/_build/latest?definitionId=92&branchName=master)
 
@@ -40,9 +40,10 @@ public static IAppBuilder UseLicenseMiddleware(this IAppBuilder appBuilder, bool
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-Please make sure to update tests as appropriate.
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+
+Pull requests are welcome. Please check out the contribution and code of conduct guidelines.
 
 ## License
 
-MIT
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
